@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me Form</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139104.jpg?size=626&ext=jpg');
+    background-size: 100% 95%; /* Spread the image horizontally while maintaining aspect ratio vertically */
+    background-repeat: no-repeat;
+}
+
+.container {
+    width: 60%; /* Make the container 80% of the viewport width */
+    max-width: 400px; /* Set a maximum width for the container */
+    margin-left: 20%; /* Shift the container to the right by 20% of the viewport width */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form container */
+    padding: 50px; /* Increase padding for a larger contact form */
+    border-radius: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+/* Additional styles to adjust form layout */
+.form-group textarea,
+.form-group input {
+    margin-bottom: 10px; /* Increase space between form fields */
+}
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin-left: 5%;
+        padding: 30px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 6px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Contact Me</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <div class="error-message" id="email-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" rows="4" required></textarea>
+        </div>
+
+        <button class="submit-btn" onclick="validateForm()">Submit</button>
+        <div class="success-message" id="success-message"></div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("email-error");
+            var successMessage = document.getElementById("success-message");
+
+            // Regular expression for basic email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                emailError.textContent = "Invalid email address.";
+                successMessage.textContent = "";
+            } else {
+                emailError.textContent = "";
+                successMessage.textContent = "Form submitted successfully!";
+            }
+        }
+    </script>
+</body>
+
+</html>
